@@ -1,5 +1,3 @@
-var DB_URL = "https://tlfgja-default-rtdb.asia-southeast1.firebasedatabase.app";
-var ADMIN_CODE = "137908";
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -22,19 +20,15 @@ var ADMIN_CODE = "137908";
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
   html,body{margin:0;padding:0;}
-  body{
-    font-family:var(--kr-body); color:var(--cream); min-height:100vh;
+  body{font-family:var(--kr-body);color:var(--cream);min-height:100vh;
     background:radial-gradient(circle at 50% 18%, var(--felt-3) 0%, var(--felt-2) 45%, var(--felt-1) 100%);
-    background-attachment:fixed; padding:18px 16px 40px; overflow-x:hidden;
-    touch-action:manipulation; -webkit-user-select:none; user-select:none;
-  }
+    background-attachment:fixed;padding:18px 16px 40px;overflow-x:hidden;
+    touch-action:manipulation;-webkit-user-select:none;user-select:none;}
   body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
-    background-image:radial-gradient(rgba(255,255,255,.025) 1px, transparent 1px);
-    background-size:4px 4px;opacity:.6;}
+    background-image:radial-gradient(rgba(255,255,255,.025) 1px, transparent 1px);background-size:4px 4px;opacity:.6;}
   input{user-select:text;-webkit-user-select:text;}
   .wrap{max-width:480px;margin:0 auto;position:relative;z-index:1;}
 
-  /* ===== 입장 화면 ===== */
   .entry{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:28px;
     background:radial-gradient(circle at 50% 30%, var(--felt-3), var(--felt-1));}
   .entry.hide{display:none;}
@@ -45,40 +39,32 @@ var ADMIN_CODE = "137908";
     box-shadow:0 8px 20px var(--shadow), inset 0 0 0 3px rgba(255,255,255,.25);animation:spinIn 1.2s ease;}
   @keyframes spinIn{0%{transform:rotateY(720deg) scale(.4);opacity:0;}100%{transform:rotateY(0) scale(1);opacity:1;}}
   .entry .eyebrow{letter-spacing:.28em;font-size:11px;color:var(--gold);text-transform:uppercase;opacity:.85;}
-  .entry h1{font-family:var(--kr-display);font-size:30px;margin:6px 0 4px;color:var(--gold-light);
-    text-shadow:0 2px 0 #b8890c,0 4px 14px var(--shadow);}
+  .entry h1{font-family:var(--kr-display);font-size:30px;margin:6px 0 4px;color:var(--gold-light);text-shadow:0 2px 0 #b8890c,0 4px 14px var(--shadow);}
   .entry p{font-size:13px;opacity:.8;margin:0 0 22px;}
   .entry input{width:100%;padding:15px 16px;border-radius:14px;text-align:center;font-family:var(--kr-fun);font-size:18px;
     background:rgba(255,255,255,.1);border:1.5px solid rgba(244,196,48,.4);color:var(--cream);margin-bottom:12px;}
   .entry input::placeholder{color:rgba(247,240,221,.45);}
-  .entry button{width:100%;padding:16px;border-radius:14px;cursor:pointer;font-family:var(--kr-display);font-size:20px;
-    color:var(--ink);background:linear-gradient(180deg,var(--gold-light),var(--gold));border:none;
-    box-shadow:0 6px 16px rgba(244,196,48,.35);touch-action:manipulation;}
+  .entry button{width:100%;padding:16px;border-radius:14px;cursor:pointer;font-family:var(--kr-display);font-size:20px;color:var(--ink);
+    background:linear-gradient(180deg,var(--gold-light),var(--gold));border:none;box-shadow:0 6px 16px rgba(244,196,48,.35);touch-action:manipulation;}
   .entry button:active{transform:translateY(2px);}
   .entry .warn{color:#ffb3b3;font-size:12px;height:16px;margin-bottom:6px;}
 
-  /* ===== 헤더 ===== */
   header{text-align:center;margin-bottom:14px;}
   header .eyebrow{letter-spacing:.28em;font-size:11px;color:var(--gold);text-transform:uppercase;opacity:.85;}
-  header h1{font-family:var(--kr-display);font-size:26px;margin:5px 0 0;line-height:1.15;
-    color:var(--gold-light);text-shadow:0 2px 0 #b8890c, 0 4px 14px var(--shadow);}
+  header h1{font-family:var(--kr-display);font-size:26px;margin:5px 0 0;line-height:1.15;color:var(--gold-light);text-shadow:0 2px 0 #b8890c,0 4px 14px var(--shadow);}
   header .desc{font-size:12px;opacity:.7;margin-top:5px;}
 
-  .balance{background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(0,0,0,.18));
-    border:1.5px solid rgba(244,196,48,.4); border-radius:18px; padding:14px 18px;
-    display:flex;align-items:center;justify-content:space-between;
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 6px 18px var(--shadow); margin-bottom:14px;}
+  .balance{background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(0,0,0,.18));border:1.5px solid rgba(244,196,48,.4);
+    border-radius:18px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 6px 18px var(--shadow);margin-bottom:14px;}
   .balance .label{font-size:13px;color:var(--gold);opacity:.9;}
-  .balance .amount{font-family:var(--kr-display);font-size:36px;line-height:1;color:var(--cream);
-    display:flex;align-items:baseline;gap:6px;}
+  .balance .amount{font-family:var(--kr-display);font-size:36px;line-height:1;color:var(--cream);display:flex;align-items:baseline;gap:6px;}
   .balance .amount.bump{animation:bump .35s ease;}
   @keyframes bump{0%{transform:scale(1);}40%{transform:scale(1.18);}100%{transform:scale(1);}}
   .balance .unit{font-family:var(--kr-fun);font-size:15px;color:var(--gold);}
   .balance .net{font-size:13px;text-align:right;}
-  .net .pos{color:var(--green-win);font-family:var(--kr-fun);}
-  .net .neg{color:var(--red);font-family:var(--kr-fun);}
+  .net .pos{color:var(--green-win);font-family:var(--kr-fun);} .net .neg{color:var(--red);font-family:var(--kr-fun);}
 
-  /* ===== 동전 ===== */
   .stage{display:flex;flex-direction:column;align-items:center;margin:6px 0 12px;perspective:1000px;}
   .coin-bob{transform-style:preserve-3d;}
   .coin-bob.idle{animation:bob 2.6s ease-in-out infinite;}
@@ -90,25 +76,20 @@ var ADMIN_CODE = "137908";
   .face{position:absolute;inset:0;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;
     backface-visibility:hidden;-webkit-backface-visibility:hidden;
     background:radial-gradient(circle at 35% 28%, var(--silver-light), var(--silver) 48%, var(--silver-deep) 100%);
-    border:6px solid var(--silver-edge);
-    box-shadow:0 10px 24px var(--shadow), inset 0 0 0 4px rgba(255,255,255,.25), inset 0 -8px 16px rgba(0,0,0,.22);color:var(--ink);}
+    border:6px solid var(--silver-edge);box-shadow:0 10px 24px var(--shadow), inset 0 0 0 4px rgba(255,255,255,.25), inset 0 -8px 16px rgba(0,0,0,.22);color:var(--ink);}
   .face .ring{position:absolute;inset:12px;border:2px dashed rgba(38,48,58,.28);border-radius:50%;}
-  .face.front{transform:rotateX(0deg);}
-  .face.back{transform:rotateX(180deg);}
+  .face.front{transform:rotateX(0deg);} .face.back{transform:rotateX(180deg);}
   .face .cap{font-family:var(--kr-fun);font-size:12px;letter-spacing:.04em;color:var(--ink);opacity:.85;}
   .face .num{font-family:var(--kr-display);font-size:50px;line-height:.9;color:var(--ink);}
   .face .won{font-family:var(--kr-display);font-size:19px;color:var(--ink);margin-top:2px;}
   .tap-hint{font-family:var(--kr-fun);font-size:13px;color:var(--gold-light);opacity:.85;margin-top:14px;height:18px;text-align:center;}
 
-  /* ===== 최근 10판 ===== */
-  .history{display:flex;gap:5px;justify-content:center;align-items:center;flex-wrap:nowrap;
-    margin-bottom:14px;min-height:36px;}
+  .history{display:flex;gap:5px;justify-content:center;align-items:center;flex-wrap:nowrap;margin-bottom:14px;min-height:36px;}
   .history .hlbl{font-size:11px;color:var(--gold);margin-right:4px;flex:none;}
   .chip{width:29px;height:29px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;
     background:radial-gradient(circle at 35% 28%, var(--silver-light), var(--silver) 55%, var(--silver-deep) 100%);
     border:2px solid var(--silver-edge);box-shadow:0 2px 4px rgba(0,0,0,.3);}
-  .chip.win{border-color:var(--green-win);}
-  .chip.lose{border-color:rgba(214,69,69,.85);}
+  .chip.win{border-color:var(--green-win);} .chip.lose{border-color:rgba(214,69,69,.85);}
   .chip .n{font-family:var(--kr-display);font-size:10px;color:var(--ink);}
   .chip svg{width:19px;height:14px;}
   .history .empty{font-size:11px;opacity:.5;}
@@ -117,16 +98,14 @@ var ADMIN_CODE = "137908";
   .pick button{flex:1;padding:13px 0;border-radius:14px;cursor:pointer;font-family:var(--kr-display);font-size:19px;
     background:rgba(255,255,255,.06);border:2px solid rgba(244,196,48,.35);color:var(--cream);transition:.15s;touch-action:manipulation;}
   .pick button .sub{display:block;font-family:var(--kr-body);font-size:11px;opacity:.7;font-weight:normal;margin-top:2px;}
-  .pick button.active{background:linear-gradient(180deg,var(--gold-light),var(--gold));color:var(--ink);
-    border-color:var(--gold-light);box-shadow:0 4px 14px rgba(244,196,48,.4);transform:translateY(-1px);}
+  .pick button.active{background:linear-gradient(180deg,var(--gold-light),var(--gold));color:var(--ink);border-color:var(--gold-light);box-shadow:0 4px 14px rgba(244,196,48,.4);transform:translateY(-1px);}
 
   .panel{background:rgba(0,0,0,.18);border:1.5px solid rgba(255,255,255,.08);border-radius:18px;padding:16px;margin-bottom:14px;}
   .panel .ttl{font-family:var(--kr-fun);font-size:14px;color:var(--gold);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;}
   .bet-row{display:flex;align-items:center;gap:12px;}
   .stepper{width:48px;height:48px;border-radius:50%;flex:none;font-size:26px;font-family:var(--kr-display);cursor:pointer;
     background:linear-gradient(180deg,var(--gold-light),#c8920e);border:none;color:var(--ink);box-shadow:0 4px 10px var(--shadow);touch-action:manipulation;}
-  .stepper:active{transform:translateY(2px);}
-  .stepper:disabled{opacity:.35;}
+  .stepper:active{transform:translateY(2px);} .stepper:disabled{opacity:.35;}
   .bet-display{flex:1;text-align:center;font-family:var(--kr-display);font-size:34px;color:var(--cream);}
   .bet-display .u{font-family:var(--kr-fun);font-size:14px;color:var(--gold);}
   .chips{display:flex;gap:8px;margin-top:12px;}
@@ -139,7 +118,24 @@ var ADMIN_CODE = "137908";
   .stat .k{font-size:10px;color:var(--gold);opacity:.85;}
   .stat .v{font-family:var(--kr-display);font-size:22px;margin-top:3px;}
 
-  /* ===== 접이식 ===== */
+  /* 순위표 */
+  .lb .ttl span{font-size:11px;opacity:.7;}
+  .lb-btns{display:flex;gap:10px;}
+  .lb-btns button{flex:1;padding:13px;border-radius:12px;cursor:pointer;font-family:var(--kr-fun);font-size:15px;border:none;touch-action:manipulation;}
+  #saveScore{background:linear-gradient(180deg,var(--gold-light),var(--gold));color:var(--ink);}
+  #showScore{background:rgba(255,255,255,.1);color:var(--cream);border:1.5px solid rgba(244,196,48,.4);}
+  .lb-list{margin-top:12px;display:none;}
+  .lb-list.show{display:block;}
+  .lb-row{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;margin-bottom:6px;background:rgba(255,255,255,.05);font-size:14px;}
+  .lb-row.me{background:rgba(244,196,48,.18);border:1px solid rgba(244,196,48,.5);}
+  .lb-row .rk{width:36px;font-family:var(--kr-display);font-size:16px;color:var(--gold);flex:none;text-align:center;}
+  .lb-row .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .lb-row .kc{font-family:var(--kr-display);font-size:16px;color:var(--cream);flex:none;}
+  .lb-row .kc small{font-family:var(--kr-body);font-size:11px;color:var(--gold);}
+  .admin-link{margin-top:12px;width:100%;background:transparent;border:1px solid rgba(214,69,69,.45);color:#ff9a9a;
+    padding:10px;border-radius:10px;font-family:var(--kr-body);font-size:12px;cursor:pointer;touch-action:manipulation;}
+  .lb-note{font-size:11.5px;opacity:.8;margin-top:9px;text-align:center;min-height:14px;line-height:1.5;}
+
   .acc{background:rgba(0,0,0,.18);border:1.5px solid rgba(255,255,255,.08);border-radius:18px;margin-bottom:14px;overflow:hidden;}
   .acc-head{width:100%;text-align:left;background:transparent;border:none;color:var(--cream);font-family:var(--kr-fun);font-size:15px;
     padding:15px 16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;touch-action:manipulation;}
@@ -148,21 +144,15 @@ var ADMIN_CODE = "137908";
   .acc-body{max-height:0;overflow:hidden;transition:max-height .32s ease;}
   .acc.open .acc-body{max-height:760px;}
   .acc-body-inner{padding:0 16px 16px;}
-  .info-text{background:linear-gradient(180deg, rgba(214,69,69,.14), rgba(0,0,0,.2));border:1.5px solid rgba(214,69,69,.4);
-    border-radius:14px;padding:13px 14px;font-size:13px;line-height:1.6;}
-  .info-text b{color:var(--gold-light);font-family:var(--kr-fun);}
-  .info-text .edge{color:var(--red);font-family:var(--kr-display);}
+  .info-text{background:linear-gradient(180deg, rgba(214,69,69,.14), rgba(0,0,0,.2));border:1.5px solid rgba(214,69,69,.4);border-radius:14px;padding:13px 14px;font-size:13px;line-height:1.6;}
+  .info-text b{color:var(--gold-light);font-family:var(--kr-fun);} .info-text .edge{color:var(--red);font-family:var(--kr-display);}
   .auto-row{display:flex;gap:10px;align-items:center;}
-  .auto-row input{width:80px;padding:11px;border-radius:11px;text-align:center;font-family:var(--kr-display);font-size:18px;
-    background:rgba(255,255,255,.08);border:1.5px solid rgba(244,196,48,.35);color:var(--cream);}
-  .auto-row button{flex:1;padding:13px;border-radius:12px;cursor:pointer;font-family:var(--kr-fun);font-size:15px;
-    background:rgba(255,255,255,.07);border:1.5px solid rgba(244,196,48,.4);color:var(--cream);touch-action:manipulation;}
-  .auto-row button:active{background:rgba(244,196,48,.15);}
+  .auto-row input{width:80px;padding:11px;border-radius:11px;text-align:center;font-family:var(--kr-display);font-size:18px;background:rgba(255,255,255,.08);border:1.5px solid rgba(244,196,48,.35);color:var(--cream);}
+  .auto-row button{flex:1;padding:13px;border-radius:12px;cursor:pointer;font-family:var(--kr-fun);font-size:15px;background:rgba(255,255,255,.07);border:1.5px solid rgba(244,196,48,.4);color:var(--cream);touch-action:manipulation;}
   .auto-result{font-size:12.5px;line-height:1.6;color:var(--cream);opacity:.95;}
   .auto-result.show{margin-top:12px;}
 
-  .reset{width:100%;padding:13px;border-radius:12px;cursor:pointer;margin-top:2px;font-family:var(--kr-fun);font-size:14px;
-    background:transparent;border:1.5px solid rgba(255,255,255,.25);color:var(--gold-light);touch-action:manipulation;}
+  .reset{width:100%;padding:13px;border-radius:12px;cursor:pointer;margin-top:2px;font-family:var(--kr-fun);font-size:14px;background:transparent;border:1.5px solid rgba(255,255,255,.25);color:var(--gold-light);touch-action:manipulation;}
 
   .toast{position:fixed;left:50%;top:30%;transform:translateX(-50%) scale(.7);z-index:50;pointer-events:none;text-align:center;opacity:0;transition:.18s;}
   .toast.show{opacity:1;transform:translateX(-50%) scale(1);}
@@ -171,33 +161,25 @@ var ADMIN_CODE = "137908";
   .toast.win .big{color:var(--green-win);} .toast.win .amt{color:var(--gold-light);}
   .toast.lose .big{color:var(--red);} .toast.lose .amt{color:#ff9a9a;}
 
-  .gameover{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:24px;
-    background:rgba(5,20,15,.86);backdrop-filter:blur(3px);}
+  .gameover{position:fixed;inset:0;z-index:60;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(5,20,15,.86);backdrop-filter:blur(3px);}
   .gameover.show{display:flex;}
   .gameover .box{text-align:center;max-width:340px;}
   .gameover h2{font-family:var(--kr-display);font-size:40px;color:var(--red);margin:0 0 8px;}
   .gameover p{font-size:14px;line-height:1.7;margin:0 0 20px;}
-  .gameover button{padding:14px 30px;border-radius:14px;cursor:pointer;font-family:var(--kr-display);font-size:18px;color:var(--ink);
-    background:linear-gradient(180deg,var(--gold-light),var(--gold));border:none;}
+  .gameover button{padding:14px 30px;border-radius:14px;cursor:pointer;font-family:var(--kr-display);font-size:18px;color:var(--ink);background:linear-gradient(180deg,var(--gold-light),var(--gold));border:none;}
 
   footer{text-align:center;font-size:11px;opacity:.5;margin-top:18px;line-height:1.6;}
 </style>
 </head>
 <body>
 
-<!-- 입장 화면 -->
 <div class="entry" id="entry">
   <div class="entry-box">
     <div class="coin-mini">
       <svg viewBox="0 0 120 92" width="48" height="36" aria-hidden="true">
-        <path d="M60 47 Q34 9 7 18 Q31 31 49 50 Z" fill="#2f3942"/>
-        <path d="M60 47 Q86 11 114 21 Q89 33 65 51 Z" fill="#3c4751"/>
-        <ellipse cx="60" cy="52" rx="14" ry="9" fill="#2f3942"/>
-        <path d="M72 49 Q93 45 101 32" stroke="#2f3942" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-        <circle cx="102" cy="30" r="4.2" fill="#2f3942"/>
-        <path d="M52 58 Q41 71 31 80" stroke="#2f3942" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-        <path d="M56 59 Q47 73 39 83" stroke="#2f3942" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-      </svg>
+        <path d="M60 47 Q34 9 7 18 Q31 31 49 50 Z" fill="#2f3942"/><path d="M60 47 Q86 11 114 21 Q89 33 65 51 Z" fill="#3c4751"/>
+        <ellipse cx="60" cy="52" rx="14" ry="9" fill="#2f3942"/><path d="M72 49 Q93 45 101 32" stroke="#2f3942" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        <circle cx="102" cy="30" r="4.2" fill="#2f3942"/></svg>
     </div>
     <div class="eyebrow">확률·통계 수업 자료</div>
     <h1>동전 던지기 확률 실험실</h1>
@@ -216,38 +198,21 @@ var ADMIN_CODE = "137908";
   </header>
 
   <div class="balance">
-    <div>
-      <div class="label" id="balLabel">내 칸쵸</div>
-      <div class="amount" id="balance">50 <span class="unit">개</span></div>
-    </div>
-    <div class="net">
-      <div style="opacity:.7;font-size:11px">순손익</div>
-      <div id="net">±0</div>
-    </div>
+    <div><div class="label" id="balLabel">내 칸쵸</div><div class="amount" id="balance">50 <span class="unit">개</span></div></div>
+    <div class="net"><div style="opacity:.7;font-size:11px">순손익</div><div id="net">±0</div></div>
   </div>
 
   <div class="stage">
     <div class="coin-bob idle" id="coinBob">
       <div class="coin" id="coin" role="button" aria-label="동전 던지기">
-        <div class="face front">
-          <div class="ring"></div>
+        <div class="face front"><div class="ring"></div>
           <svg viewBox="0 0 120 92" width="82" height="62" aria-hidden="true">
-            <path d="M60 47 Q34 9 7 18 Q31 31 49 50 Z" fill="#2f3942"/>
-            <path d="M60 47 Q86 11 114 21 Q89 33 65 51 Z" fill="#3c4751"/>
-            <ellipse cx="60" cy="52" rx="14" ry="9" fill="#2f3942"/>
-            <path d="M72 49 Q93 45 101 32" stroke="#2f3942" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-            <circle cx="102" cy="30" r="4.2" fill="#2f3942"/>
-            <path d="M99 31 L108 27" stroke="#2f3942" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M52 58 Q41 71 31 80" stroke="#2f3942" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-            <path d="M56 59 Q47 73 39 83" stroke="#2f3942" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-          </svg>
-          <div class="cap">대한민국</div>
-        </div>
-        <div class="face back">
-          <div class="ring"></div>
-          <div class="num">500</div>
-          <div class="won">원</div>
-        </div>
+            <path d="M60 47 Q34 9 7 18 Q31 31 49 50 Z" fill="#2f3942"/><path d="M60 47 Q86 11 114 21 Q89 33 65 51 Z" fill="#3c4751"/>
+            <ellipse cx="60" cy="52" rx="14" ry="9" fill="#2f3942"/><path d="M72 49 Q93 45 101 32" stroke="#2f3942" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+            <circle cx="102" cy="30" r="4.2" fill="#2f3942"/><path d="M99 31 L108 27" stroke="#2f3942" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M52 58 Q41 71 31 80" stroke="#2f3942" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M56 59 Q47 73 39 83" stroke="#2f3942" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>
+          <div class="cap">대한민국</div></div>
+        <div class="face back"><div class="ring"></div><div class="num">500</div><div class="won">원</div></div>
       </div>
     </div>
     <div class="tap-hint" id="hint">면을 고르고 동전을 터치하세요</div>
@@ -268,11 +233,7 @@ var ADMIN_CODE = "137908";
       <button class="stepper" id="plus">+</button>
     </div>
     <div class="chips">
-      <button data-bet="1">1</button>
-      <button data-bet="5">5</button>
-      <button data-bet="10">10</button>
-      <button data-bet="20">20</button>
-      <button id="allin">최대</button>
+      <button data-bet="1">1</button><button data-bet="5">5</button><button data-bet="10">10</button><button data-bet="20">20</button><button id="allin">최대</button>
     </div>
   </div>
 
@@ -283,74 +244,85 @@ var ADMIN_CODE = "137908";
     <div class="stat"><div class="k">승률</div><div class="v" id="sRate">–</div></div>
   </div>
 
-  <!-- 접이식: 설명 -->
+  <!-- 순위표 -->
+  <div class="panel lb">
+    <div class="ttl"><span>🏆 칸쵸 순위표</span><span>모두에게 공유돼요</span></div>
+    <div class="lb-btns">
+      <button id="saveScore">📤 내 결과 저장</button>
+      <button id="showScore">🏆 기록 보기</button>
+    </div>
+    <div class="lb-list" id="lbList"></div>
+    <button class="admin-link" id="adminClear">🗑 전체 기록 초기화 (관리자 전용)</button>
+    <div class="lb-note" id="lbNote"></div>
+  </div>
+
   <div class="acc" id="accInfo">
     <button class="acc-head" id="headInfo"><span>📘 게임 규칙 · 기대값 설명</span><span class="chev">▾</span></button>
     <div class="acc-body"><div class="acc-body-inner">
-      <div class="info-text">
-        겉보기엔 <b>50 : 50 공정한 게임</b> 같지만, 이기면 <b>1.95배</b>만 돌려줍니다.<br>
+      <div class="info-text">겉보기엔 <b>50 : 50 공정한 게임</b> 같지만, 이기면 <b>1.95배</b>만 돌려줍니다.<br>
         한 판 기대 수익률 = (0.5 × 1.95) − 1 = <span class="edge">−2.5%</span><br>
-        → 1,000개를 베팅하면 평균 <span class="edge">약 25개</span>가 사라집니다. 이것이 <b>하우스 엣지</b>입니다.
-      </div>
+        → 1,000개를 베팅하면 평균 <span class="edge">약 25개</span>가 사라집니다. 이것이 <b>하우스 엣지</b>입니다.</div>
     </div></div>
   </div>
 
-  <!-- 접이식: 자동 시뮬레이션 -->
   <div class="acc" id="accAuto">
     <button class="acc-head" id="headAuto"><span>🎲 자동 시뮬레이션 (대수의 법칙)</span><span class="chev">▾</span></button>
     <div class="acc-body"><div class="acc-body-inner">
-      <div class="auto-row">
-        <input type="number" id="autoN" value="100" min="1" max="100000">
-        <button id="autoRun">현재 베팅으로 자동 실행</button>
-      </div>
+      <div class="auto-row"><input type="number" id="autoN" value="100" min="1" max="100000"><button id="autoRun">현재 베팅으로 자동 실행</button></div>
       <div class="auto-result" id="autoResult"></div>
     </div></div>
   </div>
 
   <button class="reset" id="reset">처음부터 다시 (50개)</button>
-
   <footer>50 : 50처럼 보여도 길게 하면 반드시 잃는다<br>— 이것이 확률이 말해주는 진실</footer>
 </div>
 
 <div class="toast" id="toast"><div class="big"></div><div class="amt"></div></div>
-
-<div class="gameover" id="gameover">
-  <div class="box">
-    <h2>게임 오버</h2>
-    <p>칸쵸가 1개 미만이라 더는 베팅할 수 없습니다.<br>50 : 50 게임이었는데도 결국 모두 잃었죠?<br>이것이 <b style="color:var(--gold-light)">하우스 엣지의 힘</b>입니다.</p>
-    <button id="goReset">다시 시작</button>
-  </div>
-</div>
+<div class="gameover" id="gameover"><div class="box"><h2>게임 오버</h2>
+  <p>칸쵸가 1개 미만이라 더는 베팅할 수 없습니다.<br>50 : 50 게임이었는데도 결국 모두 잃었죠?<br>이것이 <b style="color:var(--gold-light)">하우스 엣지의 힘</b>입니다.</p>
+  <button id="goReset">다시 시작</button></div></div>
 
 <script>
 (function(){
   "use strict";
+
+  /* ======================================================================
+     ★★★ 설정 (여기 두 줄만 수정하세요) ★★★
+     1) DB_URL : Firebase 실시간 데이터베이스 주소를 붙여넣으세요 (끝에 / 없이).
+        예) "https://coin-toss-1234-default-rtdb.firebaseio.com"
+        비워두면 → 이 브라우저에만 임시 저장(공유 안 됨). 화면 테스트용.
+     2) ADMIN_CODE : 관리자(선생님) 비밀번호. 원하는 값으로 바꾸세요.
+     ====================================================================== */
+  var DB_URL = "https://tlfgja-default-rtdb.asia-southeast1.firebasedatabase.app";  // Firebase 주소
+  var ADMIN_CODE = "137908";  // 관리자 비밀번호 (바꾸려면 따옴표 안 숫자만 수정)
+  /* ====================================================================== */
+
   var START = 50, MAX_BET = 20, MIN_BET = 1, PAYOUT = 1.95;
   var balance = START, bet = 5, side = null, nick = "";
   var games = 0, wins = 0, losses = 0, flipping = false, coinRot = 0;
-  var history = []; // {face:'front'|'back', win:bool}
+  var history = [];
 
   function $(id){ return document.getElementById(id); }
   var coin = $("coin"), coinBob = $("coinBob");
   var elBal = $("balance"), elNet = $("net"), elBet = $("bet"), elHint = $("hint"), toast = $("toast");
+  var lbList = $("lbList"), lbNote = $("lbNote");
+  var lbOpen = false, lbPoll = null, memStore = {};
 
-  // 모바일/PC 모두에서 동작하는 탭 바인딩
   function onTap(el, fn){
     var handled = false;
-    el.addEventListener("touchend", function(e){
-      handled = true; e.preventDefault(); fn(e);
-      setTimeout(function(){ handled = false; }, 400);
-    }, {passive:false});
+    el.addEventListener("touchend", function(e){ handled = true; e.preventDefault(); fn(e); setTimeout(function(){ handled = false; }, 400); }, {passive:false});
     el.addEventListener("click", function(e){ if(handled) return; fn(e); });
   }
-
   function fmt(n){ n = Math.round(n*100)/100; return Number.isInteger(n) ? String(n) : n.toFixed(1); }
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c];}); }
+  function lbConfigured(){ return DB_URL && DB_URL.indexOf("http") === 0; }
+  function sanitizeKey(s){ var k = String(s).replace(/[.#$\[\]\/]/g,"_").slice(0,40); return k || "익명"; }
+  function localGet(){ try{ return JSON.parse(localStorage.getItem("coinScores")||"{}"); }catch(e){ return memStore; } }
+  function localSet(o){ try{ localStorage.setItem("coinScores", JSON.stringify(o)); }catch(e){ memStore = o; } }
 
   var CRANE = '<svg viewBox="0 0 120 92" aria-hidden="true">' +
-    '<path d="M60 47 Q34 9 7 18 Q31 31 49 50 Z" fill="#2f3942"/>' +
-    '<path d="M60 47 Q86 11 114 21 Q89 33 65 51 Z" fill="#3c4751"/>' +
-    '<ellipse cx="60" cy="52" rx="14" ry="9" fill="#2f3942"/>' +
-    '<path d="M72 49 Q93 45 101 32" stroke="#2f3942" stroke-width="5" fill="none" stroke-linecap="round"/>' +
+    '<path d="M60 47 Q34 9 7 18 Q31 31 49 50 Z" fill="#2f3942"/><path d="M60 47 Q86 11 114 21 Q89 33 65 51 Z" fill="#3c4751"/>' +
+    '<ellipse cx="60" cy="52" rx="14" ry="9" fill="#2f3942"/><path d="M72 49 Q93 45 101 32" stroke="#2f3942" stroke-width="5" fill="none" stroke-linecap="round"/>' +
     '<circle cx="102" cy="30" r="4.5" fill="#2f3942"/></svg>';
 
   function renderHistory(){
@@ -358,173 +330,178 @@ var ADMIN_CODE = "137908";
     if(history.length === 0){ h.innerHTML = '<span class="hlbl">최근 10판</span><span class="empty">아직 기록 없음</span>'; return; }
     var html = '<span class="hlbl">최근 10판</span>';
     for(var i=0;i<history.length;i++){
-      var it = history[i];
-      var cls = it.win ? "win" : "lose";
+      var it = history[i], cls = it.win ? "win" : "lose";
       var inner = it.face === "front" ? CRANE : '<span class="n">500</span>';
-      html += '<span class="chip ' + cls + '" title="' + (it.face==="front"?"앞면(학)":"뒷면(500)") + ' / ' + (it.win?"승":"패") + '">' + inner + '</span>';
+      html += '<span class="chip ' + cls + '">' + inner + '</span>';
     }
     h.innerHTML = html;
   }
-  function pushHistory(face, win){
-    history.push({ face: face, win: win });
-    if(history.length > 10) history.shift();
-  }
+  function pushHistory(face, win){ history.push({face:face, win:win}); if(history.length>10) history.shift(); }
 
   function render(){
     elBal.innerHTML = fmt(balance) + ' <span class="unit">개</span>';
     var net = Math.round((balance - START)*100)/100;
-    if(net > 0) elNet.innerHTML = '<span class="pos">+' + fmt(net) + '</span>';
-    else if(net < 0) elNet.innerHTML = '<span class="neg">' + fmt(net) + '</span>';
+    if(net>0) elNet.innerHTML = '<span class="pos">+' + fmt(net) + '</span>';
+    else if(net<0) elNet.innerHTML = '<span class="neg">' + fmt(net) + '</span>';
     else elNet.innerHTML = '±0';
-
     var cap = Math.min(MAX_BET, Math.floor(balance));
-    if(cap >= MIN_BET && bet > cap) bet = cap;
-    if(bet < MIN_BET) bet = MIN_BET;
+    if(cap>=MIN_BET && bet>cap) bet = cap;
+    if(bet<MIN_BET) bet = MIN_BET;
     elBet.textContent = bet;
-
-    $("sGames").textContent = games;
-    $("sWin").textContent = wins;
-    $("sLose").textContent = losses;
-    $("sRate").textContent = games ? Math.round(wins/games*100) + "%" : "–";
-    $("minus").disabled = bet <= MIN_BET;
-    $("plus").disabled = bet >= cap;
-
+    $("sGames").textContent = games; $("sWin").textContent = wins; $("sLose").textContent = losses;
+    $("sRate").textContent = games ? Math.round(wins/games*100)+"%" : "–";
+    $("minus").disabled = bet<=MIN_BET; $("plus").disabled = bet>=cap;
     renderHistory();
-    if(balance < MIN_BET) showGameOver();
+    if(balance<MIN_BET) showGameOver();
   }
 
-  function setSide(s){
-    side = s;
-    $("pickFront").classList.toggle("active", s === "front");
-    $("pickBack").classList.toggle("active", s === "back");
-    if(!flipping){ elHint.textContent = "동전을 터치해서 던지세요!"; elHint.style.color = ""; }
-  }
+  function setSide(s){ side=s; $("pickFront").classList.toggle("active",s==="front"); $("pickBack").classList.toggle("active",s==="back");
+    if(!flipping){ elHint.textContent="동전을 터치해서 던지세요!"; elHint.style.color=""; } }
 
   function showToast(win, amount){
-    toast.className = "toast " + (win ? "win" : "lose");
-    toast.querySelector(".big").textContent = win ? "승리!" : "꽝!";
-    toast.querySelector(".amt").textContent = (win ? "+" : "−") + fmt(amount) + " 개";
+    toast.className="toast "+(win?"win":"lose");
+    toast.querySelector(".big").textContent = win?"승리!":"꽝!";
+    toast.querySelector(".amt").textContent = (win?"+":"−")+fmt(amount)+" 개";
     void toast.offsetWidth; toast.classList.add("show");
     setTimeout(function(){ toast.classList.remove("show"); }, 1100);
   }
 
   function flip(){
     if(flipping) return;
-    if(balance < MIN_BET){ showGameOver(); return; }
-    if(side === null){
-      elHint.textContent = "먼저 앞면 / 뒷면을 선택하세요!";
-      elHint.style.color = "var(--red)";
-      setTimeout(function(){ elHint.style.color = ""; }, 1000);
-      return;
-    }
-    if(bet > balance){ elHint.textContent = "베팅액이 잔액보다 많아요!"; return; }
-
-    flipping = true;
-    elHint.textContent = "동전이 도는 중...";
-    var result = Math.random() < 0.5 ? "front" : "back";
-    var win = (result === side);
-
-    coinBob.classList.remove("idle");
-    coinBob.classList.remove("toss"); void coinBob.offsetWidth; coinBob.classList.add("toss");
-
-    var parity = (result === "front") ? 0 : 180;
-    var target = coinRot + 360*6;
-    target = target - (((target % 360) + 360) % 360) + parity;
-    if(target <= coinRot) target += 360;
-    coinRot = target;
-    coin.style.transform = "rotateX(" + coinRot + "deg)";
-
+    if(balance<MIN_BET){ showGameOver(); return; }
+    if(side===null){ elHint.textContent="먼저 앞면 / 뒷면을 선택하세요!"; elHint.style.color="var(--red)"; setTimeout(function(){ elHint.style.color=""; },1000); return; }
+    if(bet>balance){ elHint.textContent="베팅액이 잔액보다 많아요!"; return; }
+    flipping=true; elHint.textContent="동전이 도는 중...";
+    var result = Math.random()<0.5 ? "front":"back", win = (result===side);
+    coinBob.classList.remove("idle"); coinBob.classList.remove("toss"); void coinBob.offsetWidth; coinBob.classList.add("toss");
+    var parity = (result==="front")?0:180, target = coinRot + 360*6;
+    target = target - (((target%360)+360)%360) + parity; if(target<=coinRot) target+=360; coinRot=target;
+    coin.style.transform = "rotateX("+coinRot+"deg)";
     setTimeout(function(){
-      if(win) balance += bet * (PAYOUT - 1); else balance -= bet;
-      games++; if(win) wins++; else losses++;
-      pushHistory(result, win);
-      showToast(win, win ? bet*(PAYOUT-1) : bet);
+      if(win) balance += bet*(PAYOUT-1); else balance -= bet;
+      games++; if(win) wins++; else losses++; pushHistory(result, win);
+      showToast(win, win?bet*(PAYOUT-1):bet);
       elBal.classList.remove("bump"); void elBal.offsetWidth; elBal.classList.add("bump");
-      elHint.textContent = (result === "front" ? "앞면(학)" : "뒷면(500)") + "이 나왔습니다";
-      coinBob.classList.remove("toss"); coinBob.classList.add("idle");
-      flipping = false;
-      render();
+      elHint.textContent = (result==="front"?"앞면(학)":"뒷면(500)")+"이 나왔습니다";
+      coinBob.classList.remove("toss"); coinBob.classList.add("idle"); flipping=false; render();
     }, 1450);
   }
 
   function autoRun(){
     if(flipping) return;
-    var n = parseInt($("autoN").value, 10);
-    if(isNaN(n) || n < 1) n = 1;
-    if(n > 100000) n = 100000;
-    var startBal = balance, played = 0, w = 0, l = 0, wagered = 0;
+    var n = parseInt($("autoN").value,10); if(isNaN(n)||n<1) n=1; if(n>100000) n=100000;
+    var startBal=balance, played=0, w=0, l=0, wagered=0;
     for(var i=0;i<n;i++){
-      var cap = Math.min(MAX_BET, Math.floor(balance));
-      if(cap < MIN_BET) break;
-      var b = Math.min(bet, cap);
-      var face = Math.random() < 0.5 ? "front" : "back";
-      var aside = Math.random() < 0.5 ? "front" : "back";
-      var won = (face === aside);
-      wagered += b;
-      if(won){ balance += b*(PAYOUT-1); w++; } else { balance -= b; l++; }
-      played++; games++; if(won) wins++; else losses++;
-      pushHistory(face, won);
+      var cap=Math.min(MAX_BET,Math.floor(balance)); if(cap<MIN_BET) break;
+      var b=Math.min(bet,cap), face=Math.random()<0.5?"front":"back", aside=Math.random()<0.5?"front":"back", won=(face===aside);
+      wagered+=b; if(won){ balance+=b*(PAYOUT-1); w++; } else { balance-=b; l++; }
+      played++; games++; if(won) wins++; else losses++; pushHistory(face, won);
     }
-    var change = Math.round((balance - startBal)*100)/100;
-    var expected = Math.round(wagered * -0.025 * 100)/100;
-    var box = $("autoResult");
+    var change=Math.round((balance-startBal)*100)/100, expected=Math.round(wagered*-0.025*100)/100, box=$("autoResult");
     box.classList.add("show");
-    box.innerHTML =
-      "▶ " + played + "판 실행 · 총 베팅 <b style='color:var(--gold-light)'>" + fmt(wagered) + "개</b><br>" +
-      "결과: 승 " + w + " / 패 " + l + " (승률 " + (played ? Math.round(w/played*100) : 0) + "%)<br>" +
-      "실제 손익 <b style='color:" + (change>=0?"var(--green-win)":"var(--red)") + "'>" +
-        (change>=0?"+":"") + fmt(change) + "개</b> · 이론 기대값 <b style='color:var(--red)'>" + fmt(expected) + "개</b>";
-    elBal.classList.remove("bump"); void elBal.offsetWidth; elBal.classList.add("bump");
-    render();
+    box.innerHTML = "▶ "+played+"판 실행 · 총 베팅 <b style='color:var(--gold-light)'>"+fmt(wagered)+"개</b><br>"+
+      "결과: 승 "+w+" / 패 "+l+" (승률 "+(played?Math.round(w/played*100):0)+"%)<br>"+
+      "실제 손익 <b style='color:"+(change>=0?"var(--green-win)":"var(--red)")+"'>"+(change>=0?"+":"")+fmt(change)+"개</b> · 이론 기대값 <b style='color:var(--red)'>"+fmt(expected)+"개</b>";
+    elBal.classList.remove("bump"); void elBal.offsetWidth; elBal.classList.add("bump"); render();
   }
 
   function showGameOver(){ $("gameover").classList.add("show"); coinBob.classList.remove("idle"); }
-
   function resetGame(){
-    balance = START; bet = 5; side = null; games = 0; wins = 0; losses = 0; flipping = false; coinRot = 0;
-    history = [];
-    coin.style.transform = ""; coinBob.classList.remove("toss"); coinBob.classList.add("idle");
+    balance=START; bet=5; side=null; games=0; wins=0; losses=0; flipping=false; coinRot=0; history=[];
+    coin.style.transform=""; coinBob.classList.remove("toss"); coinBob.classList.add("idle");
     $("pickFront").classList.remove("active"); $("pickBack").classList.remove("active");
-    $("gameover").classList.remove("show");
-    $("autoResult").classList.remove("show"); $("autoResult").innerHTML = "";
-    elHint.textContent = "면을 고르고 동전을 터치하세요"; elHint.style.color = "";
-    render();
+    $("gameover").classList.remove("show"); $("autoResult").classList.remove("show"); $("autoResult").innerHTML="";
+    elHint.textContent="면을 고르고 동전을 터치하세요"; elHint.style.color=""; render();
+  }
+  function toggleAcc(el){ el.classList.toggle("open"); }
+
+  /* ===== 순위표 (공유 기록) ===== */
+  function lbGetAll(){
+    if(lbConfigured()){
+      return fetch(DB_URL + "/scores.json").then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(d){ return d||{}; });
+    }
+    return Promise.resolve(localGet());
+  }
+  function lbToArray(obj){
+    var arr=[]; for(var k in obj){ if(obj[k]) arr.push(obj[k]); }
+    arr.sort(function(a,b){ return (b.kancho-a.kancho) || (a.ts-b.ts); }); return arr;
+  }
+  function lbRefresh(){
+    return lbGetAll().then(function(obj){
+      var arr = lbToArray(obj);
+      if(arr.length===0){ lbList.innerHTML='<div style="text-align:center;opacity:.6;font-size:13px;padding:8px">아직 기록이 없습니다</div>'; return; }
+      var html="";
+      for(var i=0;i<arr.length;i++){
+        var e=arr[i], medal = i===0?"🥇":i===1?"🥈":i===2?"🥉":((i+1)+"위"), me=(e.name===nick)?" me":"";
+        html += '<div class="lb-row'+me+'"><span class="rk">'+medal+'</span><span class="nm">'+escapeHtml(e.name)+'</span><span class="kc">'+fmt(e.kancho)+'<small> 개</small></span></div>';
+      }
+      lbList.innerHTML=html;
+    }).catch(function(){ lbList.innerHTML='<div style="text-align:center;color:#ff9a9a;font-size:13px;padding:8px">불러오기 실패 — DB 주소/인터넷 확인</div>'; });
+  }
+  function lbSave(){
+    if(!nick){ lbNote.textContent="닉네임이 없습니다"; return; }
+    var entry = { name:nick, kancho:Math.round(balance*100)/100, games:games, ts:Date.now() };
+    lbNote.textContent="저장 중...";
+    var p;
+    if(lbConfigured()){
+      p = fetch(DB_URL + "/scores/" + sanitizeKey(nick) + ".json", { method:"PUT", body:JSON.stringify(entry) }).then(function(r){ if(!r.ok) throw 0; });
+    } else { var o=localGet(); o[sanitizeKey(nick)]=entry; localSet(o); p=Promise.resolve(); }
+    p.then(function(){
+      lbNote.textContent = "✅ '"+nick+"'님 결과 저장 완료 ("+fmt(balance)+"개)" + (lbConfigured()?"":" · (이 기기에만 저장됨)");
+      if(!lbOpen) toggleScores(); else lbRefresh();
+    }).catch(function(){ lbNote.textContent="⚠ 저장 실패 — DB 주소/인터넷을 확인하세요"; });
+  }
+  function lbClear(){
+    var code = (typeof prompt!=="undefined") ? prompt("관리자 비밀번호를 입력하세요") : null;
+    if(code===null) return;
+    if(code!==ADMIN_CODE){ lbNote.textContent="⚠ 비밀번호가 틀렸습니다"; return; }
+    if(typeof confirm!=="undefined" && !confirm("모든 기록을 삭제할까요? 되돌릴 수 없습니다.")) return;
+    lbNote.textContent="삭제 중...";
+    var p;
+    if(lbConfigured()){ p = fetch(DB_URL + "/scores.json", { method:"DELETE" }).then(function(r){ if(!r.ok) throw 0; }); }
+    else { localSet({}); p=Promise.resolve(); }
+    p.then(function(){ lbNote.textContent="🗑 모든 기록을 삭제했습니다"; lbRefresh(); })
+     .catch(function(){ lbNote.textContent="⚠ 삭제 실패 — DB 주소/인터넷 확인"; });
+  }
+  function startPoll(){ if(lbPoll||!lbConfigured()) return; lbPoll=setInterval(lbRefresh, 5000); }
+  function stopPoll(){ if(lbPoll){ clearInterval(lbPoll); lbPoll=null; } }
+  function toggleScores(){
+    lbOpen=!lbOpen; lbList.classList.toggle("show",lbOpen);
+    if(lbOpen){ lbRefresh(); startPoll(); $("showScore").textContent="🙈 순위 숨기기"; }
+    else { stopPoll(); $("showScore").textContent="🏆 기록 보기"; }
   }
 
-  function toggleAcc(accEl){ accEl.classList.toggle("open"); }
-
   function enterGame(){
-    var v = $("nick").value.trim();
-    if(!v){ $("nickWarn").textContent = "닉네임을 입력해 주세요!"; return; }
-    nick = v;
-    $("balLabel").textContent = nick + "님의 칸쵸";
-    $("greet").textContent = nick + "님, 행운을 빌어요! (사실은 확률이 정합니다)";
+    var v=$("nick").value.trim();
+    if(!v){ $("nickWarn").textContent="닉네임을 입력해 주세요!"; return; }
+    nick=v; $("balLabel").textContent=nick+"님의 칸쵸"; $("greet").textContent=nick+"님, 행운을 빌어요! (사실은 확률이 정합니다)";
     $("entry").classList.add("hide");
   }
 
-  // 입장 화면
+  // 입장
   onTap($("enterBtn"), enterGame);
-  $("nick").addEventListener("keydown", function(e){ if(e.key === "Enter") enterGame(); });
-
+  $("nick").addEventListener("keydown", function(e){ if(e.key==="Enter") enterGame(); });
   // 게임
   onTap(coin, flip);
   onTap($("pickFront"), function(){ setSide("front"); });
   onTap($("pickBack"), function(){ setSide("back"); });
-  onTap($("minus"), function(){ if(bet > MIN_BET){ bet--; render(); } });
-  onTap($("plus"), function(){ var cap = Math.min(MAX_BET, Math.floor(balance)); if(bet < cap){ bet++; render(); } });
-  var chips = document.querySelectorAll(".chips button[data-bet]");
-  for(var c=0;c<chips.length;c++){
-    (function(btn){ onTap(btn, function(){ bet = Math.min(parseInt(btn.getAttribute("data-bet"),10), MAX_BET); render(); }); })(chips[c]);
-  }
-  onTap($("allin"), function(){ bet = Math.min(MAX_BET, Math.floor(balance)); if(bet < MIN_BET) bet = MIN_BET; render(); });
+  onTap($("minus"), function(){ if(bet>MIN_BET){ bet--; render(); } });
+  onTap($("plus"), function(){ var cap=Math.min(MAX_BET,Math.floor(balance)); if(bet<cap){ bet++; render(); } });
+  var chips=document.querySelectorAll(".chips button[data-bet]");
+  for(var c=0;c<chips.length;c++){ (function(btn){ onTap(btn, function(){ bet=Math.min(parseInt(btn.getAttribute("data-bet"),10),MAX_BET); render(); }); })(chips[c]); }
+  onTap($("allin"), function(){ bet=Math.min(MAX_BET,Math.floor(balance)); if(bet<MIN_BET) bet=MIN_BET; render(); });
   onTap($("autoRun"), autoRun);
   onTap($("reset"), resetGame);
   onTap($("goReset"), resetGame);
-
-  // 접이식 토글
+  // 접이식
   onTap($("headInfo"), function(){ toggleAcc($("accInfo")); });
   onTap($("headAuto"), function(){ toggleAcc($("accAuto")); });
+  // 순위표
+  onTap($("saveScore"), lbSave);
+  onTap($("showScore"), toggleScores);
+  onTap($("adminClear"), lbClear);
 
+  if(!lbConfigured()) lbNote.textContent = "ℹ 공유 순위를 켜려면 코드 상단 DB_URL을 설정하세요 (지금은 이 기기에만 저장).";
   render();
 })();
 </script>
